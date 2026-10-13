@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DISCOVER ANILAO | Mabini, Philippines</title>
+    <title>SHOP | ANILAO AZURE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -24,535 +24,402 @@
         }
     </script>
 </head>
-<body class="bg-slate-bg text-slate-100">
+<body class="bg-slate-bg text-slate-100 pt-24">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0 start-0 bg-slate-bg/80 backdrop-blur-xl border-b border-white/10">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
-        <a href="#home" class="flex items-center space-x-3">
-            <span class="w-3 h-3 rounded-full bg-brand animate-pulse"></span>
-            <span class="self-center text-xl font-extrabold tracking-widest uppercase text-heading">ANILAO <span class="font-serif-italic font-normal text-brand text-2xl lowercase">azure</span></span>
-        </a>
-        <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-lg md:hidden hover:bg-slate-card focus:outline-none">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class="font-medium text-xs tracking-widest uppercase flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-10 md:mt-0">
-            <li><a href="#home" class="block py-2 text-brand font-bold">01 / Home</a></li>
-            <li><a href="#about" class="block py-2 text-body hover:text-white transition-colors">02 / About</a></li>
-            <li><a href="#gallery" class="block py-2 text-body hover:text-white transition-colors">03 / Gallery</a></li>
-            <li><a href="#faqs" class="block py-2 text-body hover:text-white transition-colors">04 / FAQ's</a></li>
-            <li><a href="shop.html" class="block py-2 text-body hover:text-white transition-colors">05 / Shop</a></li>
-          </ul>
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 top-0 start-0 bg-slate-bg/90 backdrop-blur-xl border-b border-white/10 no-print">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
+          <a href="index.html" class="flex items-center space-x-3">
+              <span class="w-3 h-3 rounded-full bg-brand"></span>
+              <span class="self-center text-xl font-extrabold tracking-widest uppercase text-heading">ANILAO <span class="font-serif-italic font-normal text-brand lowercase">azure</span></span>
+          </a>
+          <div class="flex md:order-2 space-x-3">
+              <button id="cart-btn" class="bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-xs uppercase tracking-wider rounded-full px-6 py-2.5 shadow-lg">Cart (<span id="cart-count">0</span>)</button>
+          </div>
+          <div class="hidden w-full md:block md:w-auto md:order-1">
+            <ul class="font-medium text-xs tracking-widest uppercase flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0">
+              <li><a href="index.html#home" class="block py-2 text-body hover:text-white">01 / Home</a></li>
+              <li><a href="index.html#about" class="block py-2 text-body hover:text-white">02 / About</a></li>
+              <li><a href="shop.html" class="block py-2 text-brand font-bold">05 / Shop</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
     </nav>
 
-    <!-- 1. Home Section: Dribbble "Discover" Parallax Hero -->
-    <section id="home" class="dribbble-hero-container">
-        <!-- Parallax Background Drone Layer -->
-        <div id="hero-bg" class="dribbble-bg-layer" style="background-image: url('images/homebg1.jpg');"></div>
-        <div class="dribbble-overlay"></div>
-
-        <!-- Layered parallax: light rays + drifting mist (each moves at its own speed) -->
-        <div class="hero-layer rays" data-speed="0.10"></div>
-        <div class="hero-layer mist mist-1" data-speed="0.22"></div>
-        <div class="hero-layer mist mist-2" data-speed="0.38"></div>
-        <div class="hero-layer mist mist-3" data-speed="0.55"></div>
-
-        <!-- Ambient Bubble Particles Canvas -->
-        <canvas id="bubble-canvas" class="absolute inset-0 pointer-events-none z-10"></canvas>
-
-        <!-- Floating Dribbble Metadata UI Badge (Left) -->
-        <div class="hidden lg:flex absolute left-10 top-1/3 z-20 flex-col gap-6 text-xs tracking-widest font-mono text-body/80 border-l border-brand/30 pl-4">
+    <!-- Shop Grid -->
+    <section class="max-w-screen-xl mx-auto p-4 my-8 no-print">
+        <div class="flex justify-between items-end mb-6 border-b border-white/10 pb-4">
             <div>
-                <span class="block text-brand font-bold">COORDINATES</span>
-                <span>13.7431° N, 120.8519° E</span>
+                <span class="text-xs font-mono text-brand uppercase tracking-widest">EQUIPMENT</span>
+                <h2 class="text-3xl font-extrabold text-heading">Diving Products</h2>
             </div>
+            <span class="text-xs text-body font-mono">6 ITEMS</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16" id="diving-products"></div>
+
+        <div class="flex justify-between items-end mb-6 border-b border-white/10 pb-4">
             <div>
-                <span class="block text-brand font-bold">PROVINCE</span>
-                <span>Mabini, Batangas, PH</span>
+                <span class="text-xs font-mono text-brand uppercase tracking-widest">DELICACIES & CRAFTS</span>
+                <h2 class="text-3xl font-extrabold text-heading">Local Batangas Goods</h2>
             </div>
-            <div>
-                <span class="block text-brand font-bold">DIVE DEPTH</span>
-                <span>05M — 40M</span>
-            </div>
+            <span class="text-xs text-body font-mono">6 ITEMS</span>
         </div>
-
-        <!-- Floating Dribbble Card Badge (Right) -->
-        <div class="hidden lg:block absolute right-12 bottom-24 z-20 discover-card p-5 max-w-xs text-left shadow-2xl">
-            <span class="text-[10px] font-mono tracking-widest text-brand uppercase block mb-1">SPOTLIGHT / MACRO CAPITAL</span>
-            <h4 class="text-white font-bold text-base mb-1">Birthplace of PH Diving</h4>
-            <p class="text-xs text-body leading-relaxed">Renowned worldwide for rich coral biodiversity and macro photography.</p>
-        </div>
-
-        <!-- Center Editorial Title & CTA -->
-        <div id="hero-text" class="relative z-20 text-center px-4 max-w-4xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/30 bg-slate-card/60 backdrop-blur-md mb-6">
-                <span class="w-2 h-2 rounded-full bg-brand"></span>
-                <span class="text-xs font-mono text-brand uppercase tracking-widest">DISCOVER CORAL TRIANGLE</span>
-            </div>
-
-            <h1 class="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tight text-white leading-none mb-6">
-                Anilao <span class="font-serif-italic font-normal text-brand border-b-2 border-brand/40 pb-1">Azure</span>
-            </h1>
-
-            <p class="text-lg md:text-xl text-body font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                Immerse yourself in world-class macro marine life, coral slopes, and underwater adventures in Mabini, Batangas.
-            </p>
-
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#about" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-sm uppercase tracking-wider px-9 py-4 rounded-full shadow-lg transition-all transform hover:-translate-y-1">
-                    Explore Experience
-                </a>
-                <a href="shop.html" class="w-full sm:w-auto discover-card hover:bg-white/10 text-white font-semibold text-sm uppercase tracking-wider px-9 py-4 rounded-full transition-all border border-white/20">
-                    Visit Diving Shop
-                </a>
-            </div>
-        </div>
-
-        <!-- Scroll Line Indicator -->
-        <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-body group-hover:text-brand">SCROLL</span>
-            <div class="w-[1px] h-8 bg-gradient-to-b from-brand to-transparent animate-pulse"></div>
-        </a>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="local-goods"></div>
     </section>
 
-    <!-- Artistic Parallax Slider: vertical, scroll-driven, layered -->
-    <section id="pslider" class="pslider" data-slides="4">
-        <div class="pslider-stick">
-            <article class="pslide" data-index="0">
-                <div class="pl s-bg" data-d="0.015" style="background-image:url('images/about1.jpg')"></div>
-                <div class="s-shade"></div>
-                <div class="pl s-rays" data-d="0.03"></div>
-                <div class="pl s-ghost" data-d="0.05">REEF</div>
-                <img class="pl s-diver " data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
-                <div class="pl s-text" data-d="0.04">
-                    <span class="s-count">01 / 04</span>
-                    <h2>get lost<br>in the <em>reef</em></h2>
-                    <p>Slide down coral walls glowing with colour. Anilao's reefs are only a short boat ride from the shore.</p>
-                    <a href="#about" class="s-btn">explore →</a>
-                </div>
-            </article>
-            <article class="pslide" data-index="1">
-                <div class="pl s-bg" data-d="0.015" style="background-image:url('images/anilao4.webp')"></div>
-                <div class="s-shade"></div>
-                <div class="pl s-rays" data-d="0.03"></div>
-                <div class="pl s-ghost" data-d="0.05">MACRO</div>
-                <img class="pl s-diver flip" data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
-                <div class="pl s-text" data-d="0.04">
-                    <span class="s-count">02 / 04</span>
-                    <h2>a world<br>in <em>miniature</em></h2>
-                    <p>Nudibranchs, frogfish and pygmy seahorses: the macro capital of the Philippines hides its stars in plain sight.</p>
-                    <a href="#gallery" class="s-btn">see gallery →</a>
-                </div>
-            </article>
-            <article class="pslide" data-index="2">
-                <div class="pl s-bg" data-d="0.015" style="background-image:url('images/homebg.jpg')"></div>
-                <div class="s-shade"></div>
-                <div class="pl s-rays" data-d="0.03"></div>
-                <div class="pl s-ghost" data-d="0.05">BLUE</div>
-                <img class="pl s-diver " data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
-                <div class="pl s-text" data-d="0.04">
-                    <span class="s-count">03 / 04</span>
-                    <h2>blue water,<br>first <em>light</em></h2>
-                    <p>Boats leave Mabini at sunrise, when the water is calm and the visibility is at its best.</p>
-                    <a href="#diver-section" class="s-btn">Meet Rene Camacho →</a>
-                </div>
-            </article>
-            <article class="pslide" data-index="3">
-                <div class="pl s-bg" data-d="0.015" style="background-image:url('images/anilao6.webp')"></div>
-                <div class="s-shade"></div>
-                <div class="pl s-rays" data-d="0.03"></div>
-                <div class="pl s-ghost" data-d="0.05">SHOP</div>
-                <img class="pl s-diver flip" data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
-                <div class="pl s-text" data-d="0.04">
-                    <span class="s-count">04 / 04</span>
-                    <h2>bring the<br>reef <em>home</em></h2>
-                    <p>Dive gear and local treasures from Batangas, picked for divers and travellers.</p>
-                    <a href="shop.html" class="s-btn">visit the shop →</a>
-                </div>
-            </article>
-            <div class="pslider-dots" id="pslider-dots"></div>
-            <div class="pslider-hint">SCROLL</div>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex justify-center items-center no-print">
+        <div class="discover-card p-6 rounded-2xl w-11/12 max-w-md relative shadow-2xl">
+            <button id="close-cart" class="absolute top-4 right-4 text-2xl text-body hover:text-white">&times;</button>
+            <h2 class="text-2xl text-heading font-extrabold mb-4">Your Shopping Cart</h2>
+            <div id="cart-items" class="max-h-64 overflow-y-auto mb-4 border-b border-white/10 pb-4"></div>
+            <div class="text-xl font-bold text-heading text-right mb-6">Total: ₱<span id="total-price">0</span></div>
+            <button id="checkout-btn" class="w-full bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-xs uppercase tracking-wider rounded-full py-3 shadow-lg">Proceed to Checkout</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Stats Strip (count-up numbers) -->
-    <section class="stats-strip">
-        <div class="max-w-screen-xl mx-auto px-4">
-            <span class="text-xs font-mono text-brand tracking-widest uppercase block mb-2">A WORLD-CLASS DIVE DESTINATION</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-heading mb-10">Anilao in <span class="font-serif-italic font-normal text-brand">numbers</span></h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                <div class="stat"><span class="count" data-target="40" data-suffix="+">0</span><p>Dive sites around Mabini</p></div>
-                <div class="stat"><span class="count" data-target="40" data-suffix="m">0</span><p>Maximum dive depth</p></div>
-                <div class="stat"><span class="count" data-target="7" data-suffix=" mo">0</span><p>Dry dive season (Nov to May)</p></div>
-            </div>
-        </div>
-    </section>
+    <!-- Sign-Up Modal -->
+    <div id="signup-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-lg z-[200] flex justify-center items-center no-print">
+        <div class="discover-card p-8 rounded-2xl w-11/12 max-w-lg relative shadow-2xl">
+            <button id="close-signup" class="absolute top-4 right-4 text-2xl text-body hover:text-white">&times;</button>
+            <span class="text-xs font-mono text-brand uppercase tracking-widest block mb-1 text-center">ACCOUNT REQUIRED</span>
+            <h2 class="text-2xl text-heading font-extrabold mb-6 text-center">Sign Up to Order</h2>
 
-    <!-- 2. About & Location Section -->
-    <section id="about" class="discover-section">
-        <div class="max-w-screen-xl mx-auto px-4">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="text-xs font-mono text-brand tracking-widest uppercase">02 / OVERVIEW</span>
-                <div class="h-[1px] w-12 bg-brand/30"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-7">
-                    <h2 class="text-4xl sm:text-5xl font-extrabold text-heading mb-6 leading-tight">
-                        The Birthplace of <br><span class="font-serif-italic font-normal text-brand">Scuba Diving</span> in PH
-                    </h2>
-                    <p class="text-base sm:text-lg text-body leading-relaxed mb-8">
-                        Located in the coastal municipality of Mabini, Batangas, Anilao is celebrated globally as a premier macro diving sanctuary. Just a few hours from Manila, it offers crystal-clear waters, vibrant coral walls, and incredible marine biodiversity suitable for both novice divers and experienced underwater photographers.
-                    </p>
-
-                    <!-- Travel Cards -->
-                    <h3 class="text-xl font-bold text-heading mb-4 uppercase tracking-wider">Suggested Rides from Manila</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="discover-card p-6">
-                            <span class="text-brand font-mono text-xs uppercase tracking-widest block mb-1">OPTION A</span>
-                            <h4 class="text-lg font-bold text-white mb-2">🚗 Private Route</h4>
-                            <p class="text-xs text-body leading-relaxed">Take SLEX to STAR Tollway, exit at Batangas City Grand Terminal, head through Bauan, and follow the scenic coastal road straight to Mabini.</p>
-                        </div>
-                        <div class="discover-card p-6">
-                            <span class="text-brand font-mono text-xs uppercase tracking-widest block mb-1">OPTION B</span>
-                            <h4 class="text-lg font-bold text-white mb-2">🚌 Public Transit</h4>
-                            <p class="text-xs text-body leading-relaxed">Board a Batangas City bus from Cubao or Buendia. From the grand terminal, ride a Mabini jeepney and hire a tricycle to your resort.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mabini Map -->
-                <div class="lg:col-span-5">
-                    <div class="discover-card p-3 shadow-2xl">
-                        <div class="flex justify-between items-center px-3 py-2 border-b border-white/10 mb-3">
-                            <span class="text-xs font-mono text-brand uppercase tracking-widest">MAP / MABINI, BATANGAS</span>
-                            <span class="text-[10px] text-body font-mono">BATANGAS BAY</span>
-                        </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123891.49392231682!2d120.85191845110188!3d13.743171350630777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd065518b38743%3A0xc3ab974531beeb!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" width="100%" height="380" class="rounded-lg border-0" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Gallery Section (9 Replaceable Images) -->
-    <section id="gallery" class="discover-section bg-slate-bg">
-        <div class="max-w-screen-xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
+            <form id="signup-form" class="max-w-md mx-auto space-y-4">
                 <div>
-                    <span class="text-xs font-mono text-brand tracking-widest uppercase block mb-2">03 / VISUAL GALLERY</span>
-                    <h2 class="text-4xl font-extrabold text-heading">Underwater <span class="font-serif-italic font-normal text-brand">Sanctuary</span></h2>
+                    <label class="block text-[10px] font-mono uppercase tracking-widest text-body mb-1">Email Address</label>
+                    <input type="email" id="floating_email" class="w-full bg-slate-bg border border-white/20 rounded-lg p-2.5 text-heading text-sm focus:outline-none focus:border-brand" required placeholder="diver@anilao.ph" />
                 </div>
-                <p class="text-xs text-body font-mono mt-2 md:mt-0">9 SPOTLIGHTS</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-mono uppercase tracking-widest text-body mb-1">First Name</label>
+                        <input type="text" id="floating_first_name" class="w-full bg-slate-bg border border-white/20 rounded-lg p-2.5 text-heading text-sm focus:outline-none focus:border-brand" required />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-mono uppercase tracking-widest text-body mb-1">Last Name</label>
+                        <input type="text" id="floating_last_name" class="w-full bg-slate-bg border border-white/20 rounded-lg p-2.5 text-heading text-sm focus:outline-none focus:border-brand" required />
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-xs uppercase tracking-wider rounded-full py-3.5 shadow-lg mt-2">Sign Up & Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delivery & Payment Form Modal -->
+    <div id="checkout-form-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-lg z-[250] flex justify-center items-center no-print">
+        <div class="discover-card p-8 rounded-2xl w-11/12 max-w-md relative shadow-2xl">
+            <button id="close-checkout-form" class="absolute top-4 right-4 text-2xl text-body hover:text-white">&times;</button>
+            <span class="text-xs font-mono text-brand uppercase tracking-widest block mb-1 text-center">STEP 2 OF 2</span>
+            <h2 class="text-2xl text-heading font-extrabold mb-6 text-center">Checkout Info</h2>
+
+            <form id="delivery-payment-form" class="space-y-4">
+                <div id="checkout-summary" class="text-xs border-b border-white/10 pb-3 space-y-1 max-h-32 overflow-y-auto"></div>
+                <div>
+                    <label class="block text-xs font-semibold text-heading mb-2">Delivery Location in Mabini</label>
+                    <textarea id="delivery_location" rows="3" class="w-full bg-slate-bg border border-white/20 text-heading text-sm rounded-lg p-2.5 focus:outline-none focus:border-brand" placeholder="Resort Name, Barangay, Mabini, Batangas" required></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-heading mb-2">Mode of Payment</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label><input type="radio" name="payment_mode" value="Cash on Delivery (COD)" class="sr-only" required><span class="pay-tile">💵 Cash on Delivery</span></label>
+                        <label><input type="radio" name="payment_mode" value="GCash" class="sr-only"><span class="pay-tile">📱 GCash</span></label>
+                        <label><input type="radio" name="payment_mode" value="Maya" class="sr-only"><span class="pay-tile">💳 Maya</span></label>
+                        <label><input type="radio" name="payment_mode" value="Bank Transfer" class="sr-only"><span class="pay-tile">🏦 Bank Transfer</span></label>
+                    </div>
+                    <div id="payment-extra" class="hidden mt-3 text-xs bg-slate-bg border border-white/10 rounded-lg p-3">
+                        <p id="payment-note" class="text-body"></p>
+                        <div id="payment-ref-wrap" class="hidden mt-3">
+                            <label class="block text-[10px] font-mono uppercase tracking-widest text-body mb-1">Reference Number</label>
+                            <input type="text" id="payment_reference" maxlength="60" class="w-full bg-slate-bg border border-white/20 rounded-lg p-2.5 text-heading text-sm focus:outline-none focus:border-brand" placeholder="From your payment receipt" />
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-xs uppercase tracking-wider rounded-full py-3.5 shadow-lg">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Printable Receipt Modal -->
+    <div id="receipt-modal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-xl z-[300] flex justify-center items-center">
+        <div id="receipt-content" class="bg-white text-slate-900 p-8 rounded-2xl w-11/12 max-w-md shadow-2xl relative">
+            <div class="text-center mb-6 border-b border-slate-200 pb-4">
+                <span class="text-[10px] font-mono tracking-widest text-slate-400 block mb-1">ANILAO AZURE E-SHOP</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Official Receipt</h2>
             </div>
 
-            <!-- 9 Image Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/gallery4.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+            <div id="receipt-details" class="text-xs font-mono mb-6 space-y-2 text-slate-700"></div>
+
+            <div class="border-t border-dashed border-slate-300 pt-4 mb-6">
+                <div id="receipt-items" class="space-y-2 mb-4 text-sm text-slate-700"></div>
+                <div class="flex justify-between font-extrabold text-base text-slate-900 border-t pt-3">
+                    <span>TOTAL AMOUNT:</span>
+                    <span id="receipt-total">₱0</span>
                 </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/gallery5.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/gallery7.webp" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/gallery8.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/gallery9.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/Acacia-Diving6.webp" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/ANILAO_LXV-TRAVELS.png" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/dive3.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="discover-card overflow-hidden group">
-                    <img src="images/gallery3.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
+            </div>
+
+            <div class="flex gap-4 no-print">
+                <button onclick="window.print()" class="flex-1 bg-slate-900 hover:bg-black text-white font-bold rounded-lg text-xs uppercase tracking-wider py-3">Print Receipt</button>
+                <button id="close-receipt" class="flex-1 border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold rounded-lg text-xs uppercase tracking-wider py-3">Close</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 4. Diver Section (Parallax Slide & Mid-Screen Lock) -->
-    <section id="diver-section" class="dribbble-hero-container border-t border-white/10">
-        <div class="dribbble-bg-layer" style="background-image: url('images/bgdiver1.jpg');"></div>
-        <div class="dribbble-overlay"></div>
-
-        <!-- Diver PNG: pinned to the left half of the section (screen edge to text box). Put your PNG at Image/diver.png -->
-        <img id="sliding-diver" src="images/diver1.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="Local Diver">
-
-        <div class="max-w-screen-xl mx-auto w-full flex flex-col md:flex-row items-center relative z-20 h-full px-4">
-            <!-- Left: Sliding Diver PNG -->
-            <div class="w-full md:w-1/2 relative h-full flex items-end justify-end min-h-[350px]">
-            </div>
-
-            <!-- Right: Diver Profile Card -->
-            <div id="diver-info" class="w-full md:w-1/2 p-8 discover-card opacity-0 transition-all duration-700 transform translate-y-10">
-                <span class="text-xs font-mono text-brand uppercase tracking-widest block mb-2">LOCAL EXPERT FEATURE</span>
-                <h2 class="text-3xl font-extrabold text-heading mb-2">Rene Camacho</h2>
-                <p class="text-brand font-semibold text-sm mb-4">Dive Instructor</p>
-                <p class="text-body text-sm leading-relaxed mb-6">
-                    With over 15 years leading underwater expeditions across Mabini's reefs, Rene Camacho offers unmatched knowledge of Anilao's secret macro spots, nudibranch habitats, and marine photography locations.
-                </p>
-                <a href="https://www.anilaodivingandphotography.com/" target="_blank" class="inline-block bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-xs uppercase tracking-wider px-8 py-3 rounded-full transition-all shadow-lg">
-                    Visit Official Site
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. FAQs Section -->
-    <section id="faqs" class="discover-section">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="text-center mb-10">
-                <span class="text-xs font-mono text-brand tracking-widest uppercase block mb-2">04 / KNOWLEDGE BASE</span>
-                <h2 class="text-4xl font-extrabold text-heading">Frequently Asked Questions</h2>
-            </div>
-
-            <div class="space-y-4">
-                <details class="discover-card p-6 cursor-pointer group">
-                    <summary class="font-bold text-heading flex justify-between items-center text-base">
-                        When is the best season to visit Anilao for diving?
-                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-body leading-relaxed">November to May offers the dry season with maximum water clarity, smooth ocean conditions, and optimal visibility for macro photography.</p>
-                </details>
-
-                <details class="discover-card p-6 cursor-pointer group">
-                    <summary class="font-bold text-heading flex justify-between items-center text-base">
-                        Is a scuba license mandatory for first-timers?
-                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-body leading-relaxed">No! Beginners can enroll in 'Discover Scuba Diving' programs hosted by certified instructors across Anilao resorts.</p>
-                </details>
-
-                <details class="discover-card p-6 cursor-pointer group">
-                    <summary class="font-bold text-heading flex justify-between items-center text-base">
-                        Does Anilao have sandy white beaches?
-                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-body leading-relaxed">Anilao is primarily characterized by rocky, pebble coastlines. This prevents sand churn, leaving the water pristine for coral ecosystems.</p>
-                </details>
-
-                <details class="discover-card p-6 cursor-pointer group">
-                    <summary class="font-bold text-heading flex justify-between items-center text-base">
-                        What marine species can I expect to see?
-                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-body leading-relaxed">Anilao is the world capital for nudibranchs, blue-ringed octopuses, frogfish, pygmy seahorses, and vibrant hard and soft coral gardens.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-bg border-t border-white/10 text-body text-center p-8 text-xs font-mono">
-        <p>&copy; 2026 Anilao Azure. Developed for Mabini, Batangas, Philippines.</p>
-    </footer>
-
-    <!-- Parallax Scripts -->
     <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('navbar-default').classList.toggle('hidden');
-        });
+        let cart = [];
+        let isSignedUp = false;
+        let pendingProduct = null;
+        let currentUser = "";
+        let customerId = null;   // comes from the database after sign up
 
-        /* Dribbble Editorial Scroll Engine */
-        const heroBg = document.getElementById('hero-bg');
-        const heroText = document.getElementById('hero-text');
+        const renderProduct = (product) => `
+            <div class="discover-card p-4 text-center hover:scale-105 transition-transform duration-300">
+                <img src="${product.img}" class="w-full h-32 object-cover rounded-lg mb-3">
+                <h3 class="text-heading font-semibold text-xs truncate">${product.name}</h3>
+                <p class="text-brand font-bold text-sm my-2">₱${product.price.toLocaleString()}</p>
+                <button class="w-full bg-brand hover:bg-brand-dark text-slate-bg font-extrabold rounded-full px-3 py-1.5 text-[11px] uppercase tracking-wider" onclick="handleAddToCart('${product.name}', ${product.price}, this)">Add to Cart</button>
+            </div>
+        `;
 
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
+        // Load products from MySQL through api/products.php
+        // Used when there is no PHP/MySQL (for example on Vercel)
+        const FALLBACK_PRODUCTS = [
+            { name: "Scuba Mask", price: 2500, category: "diving", img: "images/shop5.jpg" },
+            { name: "Heel Fins", price: 3200, category: "diving", img: "images/shop6.jpg" },
+            { name: "3mm Wetsuit", price: 4500, category: "diving", img: "images/shop7.jpg" },
+            { name: "Regulator", price: 18000, category: "diving", img: "images/shop8.jpg" },
+            { name: "BC Device", price: 22000, category: "diving", img: "images/shop9.jpg" },
+            { name: "Dive Watch", price: 15500, category: "diving", img: "images/shop10.jpg" },
+            { name: "Barako Coffee", price: 350, category: "local", img: "images/shop11.jpg" },
+            { name: "Bagoong", price: 180, category: "local", img: "images/shop111.jpg" },
+            { name: "Tablea Cacao", price: 220, category: "local", img: "images/shop12.jpg" },
+            { name: "Woven Hat", price: 450, category: "local", img: "images/shop13.jpg" },
+            { name: "Dried Tuyo", price: 150, category: "local", img: "images/shop14.jpg" },
+            { name: "Panutsa", price: 120, category: "local", img: "images/shop15.jpg" }
+        ];
+        let offlineMode = false;
 
-            if (heroBg && heroText) {
-                heroBg.style.transform = `scale(${1 + scrollY * 0.0003}) translateY(${scrollY * 0.25}px)`;
-                heroText.style.transform = `translateY(${scrollY * 0.15}px)`;
-                heroText.style.opacity = `${1 - scrollY / 650}`;
+        async function loadProducts() {
+            let products;
+            try {
+                const res = await fetch('api/products.php');
+                if (!res.ok) throw new Error('API not available');
+                products = await res.json();
+                if (!Array.isArray(products)) throw new Error('Bad data');
+            } catch (err) {
+                offlineMode = true;           // no database: use the built-in list
+                products = FALLBACK_PRODUCTS;
+                document.getElementById('local-goods').insertAdjacentHTML('afterend',
+                    '<p class="text-[11px] text-body font-mono mt-6">Demo mode: orders are not saved to a database.</p>');
             }
-
-            /* Layered hero parallax: faster layers = closer to the viewer */
-            document.querySelectorAll('.hero-layer').forEach(layer => {
-                layer.style.setProperty('--py', `${scrollY * layer.dataset.speed}px`);
-            });
-
-            /* Diver slides in from the left as the section scrolls into view,
-               and slides back out when you scroll up (progress is read from scroll position) */
-            const diverSection = document.getElementById('diver-section');
-            const diverImg = document.getElementById('sliding-diver');
-            const diverInfo = document.getElementById('diver-info');
-
-            if (diverSection && diverImg) {
-                const rect = diverSection.getBoundingClientRect();
-                const vh = window.innerHeight;
-
-                // 0 when the section's top edge enters the screen, 1 when it is ~25% up the screen
-                let p = (vh - rect.top) / (vh * 0.75);
-                p = Math.max(0, Math.min(1, p));
-                const eased = 1 - Math.pow(1 - p, 3); // smooth slow-down at the end
-
-                // Distance needed to start fully off the left edge of the screen
-                const col = diverImg.parentElement.getBoundingClientRect();
-                const imgW = diverImg.offsetWidth;
-                const restLeft = col.left; // image rests on the left edge of the section
-                const startX = -(restLeft + imgW + 40);
-
-                const x = startX * (1 - eased);
-                const y = (1 - eased) * 30;
-                diverImg.style.transform = `translate(${x}px, ${y}px)`;
-
-                // Show the text box once the diver has arrived, hide it again when scrolling back
-                if (p >= 0.9) {
-                    diverInfo.classList.remove('opacity-0', 'translate-y-10');
-                    diverInfo.classList.add('opacity-100', 'translate-y-0');
-                } else {
-                    diverInfo.classList.add('opacity-0', 'translate-y-10');
-                    diverInfo.classList.remove('opacity-100', 'translate-y-0');
-                }
-            }
-        });
-
-        window.dispatchEvent(new Event('scroll')); // set diver start position on load
-
-        /* Artistic parallax slider: scroll position drives which slide shows + layer offsets */
-        (function () {
-            const wrap = document.getElementById('pslider');
-            if (!wrap) return;
-            const slides = [...wrap.querySelectorAll('.pslide')];
-            const N = slides.length;
-            const dotsBox = document.getElementById('pslider-dots');
-            let mx = 0, my = 0;
-
-            slides.forEach((_, i) => {
-                const d = document.createElement('button');
-                d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-                d.onclick = () => {
-                    const top = wrap.offsetTop + (wrap.offsetHeight - window.innerHeight) * (i + 0.5) / N;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                };
-                dotsBox.appendChild(d);
-            });
-
-            function fade(local, i) {
-                if (i === 0 && local < 0.5) return 1;
-                if (i === N - 1 && local > 0.5) return 1;
-                if (local < 0.15) return Math.max(0, local / 0.15);
-                if (local > 0.85) return Math.max(0, (1 - local) / 0.15);
-                return 1;
-            }
-
-            function update() {
-                const range = wrap.offsetHeight - window.innerHeight;
-                const p = Math.min(1, Math.max(0, (window.scrollY - wrap.offsetTop) / range));
-                slides.forEach((slide, i) => {
-                    const local = p * N - i;               // 0 to 1 while this slide is "its turn"
-                    const o = fade(local, i);
-                    slide.style.opacity = o;
-                    slide.style.visibility = o > 0 ? 'visible' : 'hidden';
-                    slide.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
-                    const shift = (local - 0.5) * -1000;   // scroll parallax strength
-                    slide.querySelectorAll('.pl').forEach(el => {
-                        const d = parseFloat(el.dataset.d);
-                        el.style.transform = `translate3d(${mx * d * 400}px, ${shift * d * 4 + my * d * 400}px, 0)`;
-                    });
-                });
-                const active = Math.min(N - 1, Math.floor(p * N));
-                [...dotsBox.children].forEach((d, i) => d.classList.toggle('on', i === active));
-            }
-
-            window.addEventListener('scroll', update, { passive: true });
-            window.addEventListener('resize', update);
-            wrap.addEventListener('mousemove', e => {
-                mx = e.clientX / window.innerWidth - 0.5;
-                my = e.clientY / window.innerHeight - 0.5;
-                update();
-            });
-            update();
-        })();
-
-        /* Reveal cards as they scroll into view */
-        const revealTargets = document.querySelectorAll('#about .discover-card, #gallery .discover-card, #faqs .discover-card');
-        revealTargets.forEach(el => el.classList.add('reveal'));
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        revealTargets.forEach(el => revealObserver.observe(el));
-
-        /* Count-up numbers (run once when visible) */
-        const countObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const target = Number(el.dataset.target);
-                const suffix = el.dataset.suffix || '';
-                const start = performance.now();
-                const duration = 1600;
-                function tick(now) {
-                    const t = Math.min((now - start) / duration, 1);
-                    el.textContent = Math.round(target * t) + suffix;
-                    if (t < 1) requestAnimationFrame(tick);
-                }
-                requestAnimationFrame(tick);
-                countObserver.unobserve(el);
-            });
-        }, { threshold: 0.6 });
-        document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
-
-        /* Canvas Particle Bubbles */
-        const canvas = document.getElementById('bubble-canvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            class Bubble {
-                constructor() { this.reset(); }
-                reset() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = canvas.height + 20;
-                    this.radius = Math.random() * 3 + 1;
-                    this.speed = Math.random() * 1.2 + 0.4;
-                    this.alpha = Math.random() * 0.4 + 0.1;
-                }
-                update() {
-                    this.y -= this.speed;
-                    if (this.y < -10) this.reset();
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
-                    ctx.fill();
-                }
-            }
-
-            for (let i = 0; i < 30; i++) particles.push(new Bubble());
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(b => { b.update(); b.draw(); });
-                requestAnimationFrame(animate);
-            }
-            animate();
+            document.getElementById('diving-products').innerHTML = products.filter(p => p.category === 'diving').map(renderProduct).join('');
+            document.getElementById('local-goods').innerHTML = products.filter(p => p.category === 'local').map(renderProduct).join('');
         }
+        loadProducts();
+
+        function handleAddToCart(name, price, btn) {
+            if (!isSignedUp) {
+                pendingProduct = { name, price, btn };
+                document.getElementById('signup-modal').classList.remove('hidden');
+            } else {
+                addToCart(name, price, btn);
+            }
+        }
+
+        function addToCart(name, price, btn) {
+            const found = cart.find(i => i.name === name);
+            if (found) { found.qty = Math.min(99, found.qty + 1); }
+            else { cart.push({ name, price, qty: 1 }); }
+            updateCart();
+            flyToCart(btn);   // animation replaces the old alert popup
+        }
+
+        // The product picture flies into the Cart button
+        function flyToCart(btn) {
+            const cartIcon = document.getElementById('cart-btn');
+            const card = btn ? btn.closest('.discover-card') : null;
+            const img = card ? card.querySelector('img') : null;
+            if (!cartIcon || !img) return;
+
+            const from = img.getBoundingClientRect();
+            const to = cartIcon.getBoundingClientRect();
+
+            const flyer = img.cloneNode();
+            flyer.className = 'fly-img';
+            flyer.style.left = from.left + 'px';
+            flyer.style.top = from.top + 'px';
+            flyer.style.width = from.width + 'px';
+            flyer.style.height = from.height + 'px';
+            document.body.appendChild(flyer);
+
+            requestAnimationFrame(() => {
+                const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
+                const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+                flyer.style.transform = `translate(${dx}px, ${dy}px) scale(0.1)`;
+                flyer.style.opacity = '0.4';
+            });
+
+            flyer.addEventListener('transitionend', () => {
+                flyer.remove();
+                cartIcon.classList.remove('cart-bump');
+                void cartIcon.offsetWidth;
+                cartIcon.classList.add('cart-bump');   // little bounce when it lands
+            }, { once: true });
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.reduce((n, i) => n + i.qty, 0);
+            document.getElementById('cart-items').innerHTML = cart.length === 0
+                ? '<p class="text-xs text-body text-center py-6">Your cart is empty.</p>'
+                : cart.map((item, i) => `
+                <div class="flex items-center gap-2 mb-3 text-xs">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-heading font-medium truncate">${item.name}</p>
+                        <p class="text-body">₱${item.price.toLocaleString()} each</p>
+                    </div>
+                    <button onclick="changeQty(${i}, -1)" class="qty-btn" aria-label="Decrease">−</button>
+                    <input type="number" min="1" max="99" value="${item.qty}" onchange="setQty(${i}, this.value)" class="qty-input">
+                    <button onclick="changeQty(${i}, 1)" class="qty-btn" aria-label="Increase">+</button>
+                    <span class="w-20 text-right text-brand font-bold">₱${(item.price * item.qty).toLocaleString()}</span>
+                    <button onclick="removeItem(${i})" class="text-body hover:text-red-400 text-xl leading-none" aria-label="Remove item">&times;</button>
+                </div>`).join('');
+            document.getElementById('total-price').innerText = cart.reduce((sum, item) => sum + item.price * item.qty, 0).toLocaleString();
+        }
+
+        function changeQty(i, d) { setQty(i, cart[i].qty + d); }
+        function setQty(i, value) {
+            const q = Math.max(1, Math.min(99, parseInt(value) || 1));
+            cart[i].qty = q;
+            updateCart();
+        }
+        function removeItem(i) { cart.splice(i, 1); updateCart(); }
+
+        // ---- Payment options: edit these numbers to your real accounts ----
+        const PAYMENT_INFO = {
+            'Cash on Delivery (COD)': { ref: false, note: 'Pay in cash when your order arrives or when you pick it up at the resort.' },
+            'GCash': { ref: true, note: 'Send the total to GCash 0917 000 0000 (Anilao Azure), then enter the reference number.' },
+            'Maya': { ref: true, note: 'Send the total to Maya 0918 000 0000 (Anilao Azure), then enter the reference number.' },
+            'Bank Transfer': { ref: true, note: 'Transfer to BDO account 0000 0000 0000 (Anilao Azure), then enter the reference number.' }
+        };
+        function showPaymentExtra() {
+            const sel = document.querySelector('input[name="payment_mode"]:checked');
+            const box = document.getElementById('payment-extra');
+            const input = document.getElementById('payment_reference');
+            if (!sel) { box.classList.add('hidden'); input.required = false; return; }
+            const info = PAYMENT_INFO[sel.value];
+            document.getElementById('payment-note').innerText = info.note;
+            document.getElementById('payment-ref-wrap').classList.toggle('hidden', !info.ref);
+            input.required = info.ref;
+            box.classList.remove('hidden');
+        }
+        document.querySelectorAll('input[name="payment_mode"]').forEach(r => r.addEventListener('change', showPaymentExtra));
+
+        function renderCheckoutSummary() {
+            const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+            document.getElementById('checkout-summary').innerHTML =
+                cart.map(i => `<div class="flex justify-between text-body"><span>${i.qty}x ${i.name}</span><span>₱${(i.price * i.qty).toLocaleString()}</span></div>`).join('') +
+                `<div class="flex justify-between font-bold text-heading pt-1"><span>Total</span><span>₱${total.toLocaleString()}</span></div>`;
+        }
+
+        const toggleClass = (id, cls) => document.getElementById(id).classList.toggle(cls);
+
+        document.getElementById('cart-btn').onclick = () => toggleClass('cart-modal', 'hidden');
+        document.getElementById('close-cart').onclick = () => toggleClass('cart-modal', 'hidden');
+        document.getElementById('close-signup').onclick = () => toggleClass('signup-modal', 'hidden');
+        document.getElementById('close-checkout-form').onclick = () => toggleClass('checkout-form-modal', 'hidden');
+
+        document.getElementById('close-receipt').onclick = () => {
+            toggleClass('receipt-modal', 'hidden');
+            cart = []; updateCart();
+        };
+
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const first = document.getElementById('floating_first_name').value;
+            const last = document.getElementById('floating_last_name').value;
+            const email = document.getElementById('floating_email').value;
+
+            if (offlineMode) { customerId = null; } else
+            // Save the customer in MySQL through api/signup.php
+            try {
+                const res = await fetch('api/signup.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, first_name: first, last_name: last })
+                });
+                const data = await res.json();
+                if (!data.success) throw new Error(data.error);
+                customerId = data.customer_id;
+            } catch (err) {
+                alert('Sign up failed: ' + err.message);
+                return;
+            }
+
+            isSignedUp = true;
+            currentUser = first + ' ' + last;
+            toggleClass('signup-modal', 'hidden');
+            if (pendingProduct) {
+                addToCart(pendingProduct.name, pendingProduct.price, pendingProduct.btn);
+                pendingProduct = null;
+            }
+        });
+
+        document.getElementById('checkout-btn').onclick = () => {
+            if(cart.length === 0) return alert("Cart is empty!");
+            toggleClass('cart-modal', 'hidden');
+            renderCheckoutSummary();
+            toggleClass('checkout-form-modal', 'hidden');
+        };
+
+        document.getElementById('delivery-payment-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let loc = document.getElementById('delivery_location').value;
+            const pay = document.querySelector('input[name="payment_mode"]:checked').value;
+            const payRef = document.getElementById('payment_reference').value.trim();
+            let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+            let date = new Date().toLocaleString();
+            let refNum;
+
+            if (offlineMode) {
+                refNum = Math.floor(Math.random() * 900000) + 100000;
+            } else try {
+                // Save the order in MySQL through api/checkout.php
+                const res = await fetch('api/checkout.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        customer_id: customerId,
+                        delivery_location: loc,
+                        payment_mode: pay,
+                        payment_reference: payRef,
+                        items: cart.map(i => ({ name: i.name, qty: i.qty }))
+                    })
+                });
+                const data = await res.json();
+                if (!data.success) throw new Error(data.error);
+                refNum = data.ref;
+                total = data.total;
+            } catch (err) {
+                alert('Could not save your order: ' + err.message);
+                return;
+            }
+
+            document.getElementById('receipt-details').innerHTML = `
+                <p><strong>ORDER REF:</strong> #AZURE-${refNum}</p>
+                <p><strong>DATE:</strong> ${date}</p>
+                <p><strong>CUSTOMER:</strong> ${currentUser}</p>
+                <p><strong>DELIVERY LOCATION:</strong> ${loc}</p>
+                <p><strong>PAYMENT METHOD:</strong> ${pay}</p>
+                ${payRef ? `<p><strong>PAYMENT REF:</strong> ${payRef}</p>` : ''}
+            `;
+
+            document.getElementById('receipt-items').innerHTML = cart.map(item => `<div class="flex justify-between"><span>${item.qty}x ${item.name}</span><span>₱${(item.price * item.qty).toLocaleString()}</span></div>`).join('');
+            document.getElementById('receipt-total').innerText = `₱${total.toLocaleString()}`;
+
+            e.target.reset();
+            showPaymentExtra();
+            toggleClass('checkout-form-modal', 'hidden');
+            toggleClass('receipt-modal', 'hidden');
+        });
     </script>
 </body>
 </html>

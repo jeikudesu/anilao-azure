@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISCOVER ANILAO | Mabini, Philippines</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#38bdf8', 'brand-dark': '#0284c7', 'brand-light': '#bae6fd',
+                        'slate-bg': '#08101a', 'slate-card': '#0d1b2a', 'heading': '#f0f9ff',
+                        'body': '#94a3b8'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-bg text-slate-100">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 start-0 bg-slate-bg/80 backdrop-blur-xl border-b border-white/10">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
+        <a href="#home" class="flex items-center space-x-3">
+            <span class="w-3 h-3 rounded-full bg-brand animate-pulse"></span>
+            <span class="self-center text-xl font-extrabold tracking-widest uppercase text-heading">ANILAO <span class="font-serif-italic font-normal text-brand text-2xl lowercase">azure</span></span>
+        </a>
+        <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-lg md:hidden hover:bg-slate-card focus:outline-none">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul class="font-medium text-xs tracking-widest uppercase flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-10 md:mt-0">
+            <li><a href="#home" class="block py-2 text-brand font-bold">01 / Home</a></li>
+            <li><a href="#about" class="block py-2 text-body hover:text-white transition-colors">02 / About</a></li>
+            <li><a href="#gallery" class="block py-2 text-body hover:text-white transition-colors">03 / Gallery</a></li>
+            <li><a href="#faqs" class="block py-2 text-body hover:text-white transition-colors">04 / FAQ's</a></li>
+            <li><a href="shop.html" class="block py-2 text-body hover:text-white transition-colors">05 / Shop</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 1. Home Section: Dribbble "Discover" Parallax Hero -->
+    <section id="home" class="dribbble-hero-container">
+        <!-- Parallax Background Drone Layer -->
+        <div id="hero-bg" class="dribbble-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1518182170546-076616fdcbac?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="dribbble-overlay"></div>
+
+        <!-- Layered parallax: light rays + drifting mist (each moves at its own speed) -->
+        <div class="hero-layer rays" data-speed="0.10"></div>
+        <div class="hero-layer mist mist-1" data-speed="0.22"></div>
+        <div class="hero-layer mist mist-2" data-speed="0.38"></div>
+        <div class="hero-layer mist mist-3" data-speed="0.55"></div>
+
+        <!-- Ambient Bubble Particles Canvas -->
+        <canvas id="bubble-canvas" class="absolute inset-0 pointer-events-none z-10"></canvas>
+
+        <!-- Floating Dribbble Metadata UI Badge (Left) -->
+        <div class="hidden lg:flex absolute left-10 top-1/3 z-20 flex-col gap-6 text-xs tracking-widest font-mono text-body/80 border-l border-brand/30 pl-4">
+            <div>
+                <span class="block text-brand font-bold">COORDINATES</span>
+                <span>13.7431° N, 120.8519° E</span>
+            </div>
+            <div>
+                <span class="block text-brand font-bold">PROVINCE</span>
+                <span>Mabini, Batangas, PH</span>
+            </div>
+            <div>
+                <span class="block text-brand font-bold">DIVE DEPTH</span>
+                <span>05M — 40M</span>
+            </div>
+        </div>
+
+        <!-- Floating Dribbble Card Badge (Right) -->
+        <div class="hidden lg:block absolute right-12 bottom-24 z-20 discover-card p-5 max-w-xs text-left shadow-2xl">
+            <span class="text-[10px] font-mono tracking-widest text-brand uppercase block mb-1">SPOTLIGHT / MACRO CAPITAL</span>
+            <h4 class="text-white font-bold text-base mb-1">Birthplace of PH Diving</h4>
+            <p class="text-xs text-body leading-relaxed">Renowned worldwide for rich coral biodiversity and macro photography.</p>
+        </div>
+
+        <!-- Center Editorial Title & CTA -->
+        <div id="hero-text" class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/30 bg-slate-card/60 backdrop-blur-md mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand"></span>
+                <span class="text-xs font-mono text-brand uppercase tracking-widest">DISCOVER CORAL TRIANGLE</span>
+            </div>
+
+            <h1 class="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tight text-white leading-none mb-6">
+                Anilao <span class="font-serif-italic font-normal text-brand border-b-2 border-brand/40 pb-1">Azure</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-body font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Immerse yourself in world-class macro marine life, coral slopes, and underwater adventures in Mabini, Batangas.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#about" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-sm uppercase tracking-wider px-9 py-4 rounded-full shadow-lg transition-all transform hover:-translate-y-1">
+                    Explore Experience
+                </a>
+                <a href="shop.html" class="w-full sm:w-auto discover-card hover:bg-white/10 text-white font-semibold text-sm uppercase tracking-wider px-9 py-4 rounded-full transition-all border border-white/20">
+                    Visit Diving Shop
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Line Indicator -->
+        <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-body group-hover:text-brand">SCROLL</span>
+            <div class="w-[1px] h-8 bg-gradient-to-b from-brand to-transparent animate-pulse"></div>
+        </a>
+    </section>
+
+    <!-- Artistic Parallax Slider: vertical, scroll-driven, layered -->
+    <section id="pslider" class="pslider" data-slides="4">
+        <div class="pslider-stick">
+            <article class="pslide" data-index="0">
+                <div class="pl s-bg" data-d="0.015" style="background-image:url('https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="s-shade"></div>
+                <div class="pl s-rays" data-d="0.03"></div>
+                <div class="pl s-ghost" data-d="0.05">REEF</div>
+                <img class="pl s-diver " data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
+                <div class="pl s-text" data-d="0.04">
+                    <span class="s-count">01 / 04</span>
+                    <h2>get lost<br>in the <em>reef</em></h2>
+                    <p>Slide down coral walls glowing with colour. Anilao's reefs are only a short boat ride from the shore.</p>
+                    <a href="#about" class="s-btn">explore →</a>
+                </div>
+            </article>
+            <article class="pslide" data-index="1">
+                <div class="pl s-bg" data-d="0.015" style="background-image:url('https://images.unsplash.com/photo-1582967788606-a171c1080cb0?auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="s-shade"></div>
+                <div class="pl s-rays" data-d="0.03"></div>
+                <div class="pl s-ghost" data-d="0.05">MACRO</div>
+                <img class="pl s-diver flip" data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
+                <div class="pl s-text" data-d="0.04">
+                    <span class="s-count">02 / 04</span>
+                    <h2>a world<br>in <em>miniature</em></h2>
+                    <p>Nudibranchs, frogfish and pygmy seahorses: the macro capital of the Philippines hides its stars in plain sight.</p>
+                    <a href="#gallery" class="s-btn">see gallery →</a>
+                </div>
+            </article>
+            <article class="pslide" data-index="2">
+                <div class="pl s-bg" data-d="0.015" style="background-image:url('https://images.unsplash.com/photo-1516815231560-8f41ec531527?auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="s-shade"></div>
+                <div class="pl s-rays" data-d="0.03"></div>
+                <div class="pl s-ghost" data-d="0.05">BLUE</div>
+                <img class="pl s-diver " data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
+                <div class="pl s-text" data-d="0.04">
+                    <span class="s-count">03 / 04</span>
+                    <h2>blue water,<br>first <em>light</em></h2>
+                    <p>Boats leave Mabini at sunrise, when the water is calm and the visibility is at its best.</p>
+                    <a href="#diver-section" class="s-btn">meet captain juan →</a>
+                </div>
+            </article>
+            <article class="pslide" data-index="3">
+                <div class="pl s-bg" data-d="0.015" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80')"></div>
+                <div class="s-shade"></div>
+                <div class="pl s-rays" data-d="0.03"></div>
+                <div class="pl s-ghost" data-d="0.05">SHOP</div>
+                <img class="pl s-diver flip" data-d="0.09" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="">
+                <div class="pl s-text" data-d="0.04">
+                    <span class="s-count">04 / 04</span>
+                    <h2>bring the<br>reef <em>home</em></h2>
+                    <p>Dive gear and local treasures from Batangas, picked for divers and travellers.</p>
+                    <a href="shop.html" class="s-btn">visit the shop →</a>
+                </div>
+            </article>
+            <div class="pslider-dots" id="pslider-dots"></div>
+            <div class="pslider-hint">SCROLL</div>
+        </div>
+    </section>
+
+    <!-- Stats Strip (count-up numbers) -->
+    <section class="stats-strip">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <span class="text-xs font-mono text-brand tracking-widest uppercase block mb-2">A WORLD-CLASS DIVE DESTINATION</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-heading mb-10">Anilao in <span class="font-serif-italic font-normal text-brand">numbers</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <div class="stat"><span class="count" data-target="40" data-suffix="+">0</span><p>Dive sites around Mabini</p></div>
+                <div class="stat"><span class="count" data-target="40" data-suffix="m">0</span><p>Maximum dive depth</p></div>
+                <div class="stat"><span class="count" data-target="7" data-suffix=" mo">0</span><p>Dry dive season (Nov to May)</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. About & Location Section -->
+    <section id="about" class="discover-section">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-xs font-mono text-brand tracking-widest uppercase">02 / OVERVIEW</span>
+                <div class="h-[1px] w-12 bg-brand/30"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-7">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-heading mb-6 leading-tight">
+                        The Birthplace of <br><span class="font-serif-italic font-normal text-brand">Scuba Diving</span> in PH
+                    </h2>
+                    <p class="text-base sm:text-lg text-body leading-relaxed mb-8">
+                        Located in the coastal municipality of Mabini, Batangas, Anilao is celebrated globally as a premier macro diving sanctuary. Just a few hours from Manila, it offers crystal-clear waters, vibrant coral walls, and incredible marine biodiversity suitable for both novice divers and experienced underwater photographers.
+                    </p>
+
+                    <!-- Travel Cards -->
+                    <h3 class="text-xl font-bold text-heading mb-4 uppercase tracking-wider">Suggested Rides from Manila</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="discover-card p-6">
+                            <span class="text-brand font-mono text-xs uppercase tracking-widest block mb-1">OPTION A</span>
+                            <h4 class="text-lg font-bold text-white mb-2">🚗 Private Route</h4>
+                            <p class="text-xs text-body leading-relaxed">Take SLEX to STAR Tollway, exit at Batangas City Grand Terminal, head through Bauan, and follow the scenic coastal road straight to Mabini.</p>
+                        </div>
+                        <div class="discover-card p-6">
+                            <span class="text-brand font-mono text-xs uppercase tracking-widest block mb-1">OPTION B</span>
+                            <h4 class="text-lg font-bold text-white mb-2">🚌 Public Transit</h4>
+                            <p class="text-xs text-body leading-relaxed">Board a Batangas City bus from Cubao or Buendia. From the grand terminal, ride a Mabini jeepney and hire a tricycle to your resort.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mabini Map -->
+                <div class="lg:col-span-5">
+                    <div class="discover-card p-3 shadow-2xl">
+                        <div class="flex justify-between items-center px-3 py-2 border-b border-white/10 mb-3">
+                            <span class="text-xs font-mono text-brand uppercase tracking-widest">MAP / MABINI, BATANGAS</span>
+                            <span class="text-[10px] text-body font-mono">BATANGAS BAY</span>
+                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123891.49392231682!2d120.85191845110188!3d13.743171350630777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd065518b38743%3A0xc3ab974531beeb!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" width="100%" height="380" class="rounded-lg border-0" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Gallery Section (9 Replaceable Images) -->
+    <section id="gallery" class="discover-section bg-slate-bg">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
+                <div>
+                    <span class="text-xs font-mono text-brand tracking-widest uppercase block mb-2">03 / VISUAL GALLERY</span>
+                    <h2 class="text-4xl font-extrabold text-heading">Underwater <span class="font-serif-italic font-normal text-brand">Sanctuary</span></h2>
+                </div>
+                <p class="text-xs text-body font-mono mt-2 md:mt-0">9 SPOTLIGHTS / REPLACEABLE IMAGE LINKS</p>
+            </div>
+
+            <!-- 9 Image Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1621272036047-bb0f76bbc1ad?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1516815231560-8f41ec531527?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1551009175-15bdf9dcb580?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1596328546171-77e37b5fefef?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="discover-card overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1601614763830-746761665a39?auto=format&fit=crop&w=600&q=80" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Diver Section (Parallax Slide & Mid-Screen Lock) -->
+    <section id="diver-section" class="dribbble-hero-container border-t border-white/10">
+        <div class="dribbble-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="dribbble-overlay"></div>
+
+        <!-- Diver PNG: pinned to the left half of the section (screen edge to text box). Put your PNG at Image/diver.png -->
+        <img id="sliding-diver" src="Image/diver.png" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Scuba_diver_icon.png'" alt="Local Diver">
+
+        <div class="max-w-screen-xl mx-auto w-full flex flex-col md:flex-row items-center relative z-20 h-full px-4">
+            <!-- Left: Sliding Diver PNG -->
+            <div class="w-full md:w-1/2 relative h-full flex items-end justify-end min-h-[350px]">
+            </div>
+
+            <!-- Right: Diver Profile Card -->
+            <div id="diver-info" class="w-full md:w-1/2 p-8 discover-card opacity-0 transition-all duration-700 transform translate-y-10">
+                <span class="text-xs font-mono text-brand uppercase tracking-widest block mb-2">LOCAL EXPERT FEATURE</span>
+                <h2 class="text-3xl font-extrabold text-heading mb-2">Captain Juan</h2>
+                <p class="text-brand font-semibold text-sm mb-4">Master Dive Guide / Mabini Native</p>
+                <p class="text-body text-sm leading-relaxed mb-6">
+                    With over 15 years leading underwater expeditions across Mabini's reefs, Captain Juan offers unmatched knowledge of Anilao's secret macro spots, nudibranch habitats, and marine photography locations.
+                </p>
+                <a href="https://dribbble.com/shots/5811445-Discover-Parallax-website" target="_blank" class="inline-block bg-brand hover:bg-brand-dark text-slate-bg font-extrabold text-xs uppercase tracking-wider px-8 py-3 rounded-full transition-all shadow-lg">
+                    Visit Official Site
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FAQs Section -->
+    <section id="faqs" class="discover-section">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-xs font-mono text-brand tracking-widest uppercase block mb-2">04 / KNOWLEDGE BASE</span>
+                <h2 class="text-4xl font-extrabold text-heading">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="discover-card p-6 cursor-pointer group">
+                    <summary class="font-bold text-heading flex justify-between items-center text-base">
+                        When is the best season to visit Anilao for diving?
+                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
+                    </summary>
+                    <p class="mt-4 text-sm text-body leading-relaxed">November to May offers the dry season with maximum water clarity, smooth ocean conditions, and optimal visibility for macro photography.</p>
+                </details>
+
+                <details class="discover-card p-6 cursor-pointer group">
+                    <summary class="font-bold text-heading flex justify-between items-center text-base">
+                        Is a scuba license mandatory for first-timers?
+                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
+                    </summary>
+                    <p class="mt-4 text-sm text-body leading-relaxed">No! Beginners can enroll in 'Discover Scuba Diving' programs hosted by certified instructors across Anilao resorts.</p>
+                </details>
+
+                <details class="discover-card p-6 cursor-pointer group">
+                    <summary class="font-bold text-heading flex justify-between items-center text-base">
+                        Does Anilao have sandy white beaches?
+                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
+                    </summary>
+                    <p class="mt-4 text-sm text-body leading-relaxed">Anilao is primarily characterized by rocky, pebble coastlines. This prevents sand churn, leaving the water pristine for coral ecosystems.</p>
+                </details>
+
+                <details class="discover-card p-6 cursor-pointer group">
+                    <summary class="font-bold text-heading flex justify-between items-center text-base">
+                        What marine species can I expect to see?
+                        <span class="group-open:rotate-180 transition-transform text-brand">▼</span>
+                    </summary>
+                    <p class="mt-4 text-sm text-body leading-relaxed">Anilao is the world capital for nudibranchs, blue-ringed octopuses, frogfish, pygmy seahorses, and vibrant hard and soft coral gardens.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-bg border-t border-white/10 text-body text-center p-8 text-xs font-mono">
+        <p>&copy; 2026 Anilao Azure. Developed for Mabini, Batangas, Philippines.</p>
+    </footer>
+
+    <!-- Parallax Scripts -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('navbar-default').classList.toggle('hidden');
+        });
+
+        /* Dribbble Editorial Scroll Engine */
+        const heroBg = document.getElementById('hero-bg');
+        const heroText = document.getElementById('hero-text');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            if (heroBg && heroText) {
+                heroBg.style.transform = `scale(${1 + scrollY * 0.0003}) translateY(${scrollY * 0.25}px)`;
+                heroText.style.transform = `translateY(${scrollY * 0.15}px)`;
+                heroText.style.opacity = `${1 - scrollY / 650}`;
+            }
+
+            /* Layered hero parallax: faster layers = closer to the viewer */
+            document.querySelectorAll('.hero-layer').forEach(layer => {
+                layer.style.setProperty('--py', `${scrollY * layer.dataset.speed}px`);
+            });
+
+            /* Diver slides in from the left as the section scrolls into view,
+               and slides back out when you scroll up (progress is read from scroll position) */
+            const diverSection = document.getElementById('diver-section');
+            const diverImg = document.getElementById('sliding-diver');
+            const diverInfo = document.getElementById('diver-info');
+
+            if (diverSection && diverImg) {
+                const rect = diverSection.getBoundingClientRect();
+                const vh = window.innerHeight;
+
+                // 0 when the section's top edge enters the screen, 1 when it is ~25% up the screen
+                let p = (vh - rect.top) / (vh * 0.75);
+                p = Math.max(0, Math.min(1, p));
+                const eased = 1 - Math.pow(1 - p, 3); // smooth slow-down at the end
+
+                // Distance needed to start fully off the left edge of the screen
+                const col = diverImg.parentElement.getBoundingClientRect();
+                const imgW = diverImg.offsetWidth;
+                const restLeft = col.left; // image rests on the left edge of the section
+                const startX = -(restLeft + imgW + 40);
+
+                const x = startX * (1 - eased);
+                const y = (1 - eased) * 30;
+                diverImg.style.transform = `translate(${x}px, ${y}px)`;
+
+                // Show the text box once the diver has arrived, hide it again when scrolling back
+                if (p >= 0.9) {
+                    diverInfo.classList.remove('opacity-0', 'translate-y-10');
+                    diverInfo.classList.add('opacity-100', 'translate-y-0');
+                } else {
+                    diverInfo.classList.add('opacity-0', 'translate-y-10');
+                    diverInfo.classList.remove('opacity-100', 'translate-y-0');
+                }
+            }
+        });
+
+        window.dispatchEvent(new Event('scroll')); // set diver start position on load
+
+        /* Artistic parallax slider: scroll position drives which slide shows + layer offsets */
+        (function () {
+            const wrap = document.getElementById('pslider');
+            if (!wrap) return;
+            const slides = [...wrap.querySelectorAll('.pslide')];
+            const N = slides.length;
+            const dotsBox = document.getElementById('pslider-dots');
+            let mx = 0, my = 0;
+
+            slides.forEach((_, i) => {
+                const d = document.createElement('button');
+                d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                d.onclick = () => {
+                    const top = wrap.offsetTop + (wrap.offsetHeight - window.innerHeight) * (i + 0.5) / N;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                };
+                dotsBox.appendChild(d);
+            });
+
+            function fade(local, i) {
+                if (i === 0 && local < 0.5) return 1;
+                if (i === N - 1 && local > 0.5) return 1;
+                if (local < 0.15) return Math.max(0, local / 0.15);
+                if (local > 0.85) return Math.max(0, (1 - local) / 0.15);
+                return 1;
+            }
+
+            function update() {
+                const range = wrap.offsetHeight - window.innerHeight;
+                const p = Math.min(1, Math.max(0, (window.scrollY - wrap.offsetTop) / range));
+                slides.forEach((slide, i) => {
+                    const local = p * N - i;               // 0 to 1 while this slide is "its turn"
+                    const o = fade(local, i);
+                    slide.style.opacity = o;
+                    slide.style.visibility = o > 0 ? 'visible' : 'hidden';
+                    slide.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
+                    const shift = (local - 0.5) * -1000;   // scroll parallax strength
+                    slide.querySelectorAll('.pl').forEach(el => {
+                        const d = parseFloat(el.dataset.d);
+                        el.style.transform = `translate3d(${mx * d * 400}px, ${shift * d * 4 + my * d * 400}px, 0)`;
+                    });
+                });
+                const active = Math.min(N - 1, Math.floor(p * N));
+                [...dotsBox.children].forEach((d, i) => d.classList.toggle('on', i === active));
+            }
+
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            wrap.addEventListener('mousemove', e => {
+                mx = e.clientX / window.innerWidth - 0.5;
+                my = e.clientY / window.innerHeight - 0.5;
+                update();
+            });
+            update();
+        })();
+
+        /* Reveal cards as they scroll into view */
+        const revealTargets = document.querySelectorAll('#about .discover-card, #gallery .discover-card, #faqs .discover-card');
+        revealTargets.forEach(el => el.classList.add('reveal'));
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealTargets.forEach(el => revealObserver.observe(el));
+
+        /* Count-up numbers (run once when visible) */
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = Number(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                const start = performance.now();
+                const duration = 1600;
+                function tick(now) {
+                    const t = Math.min((now - start) / duration, 1);
+                    el.textContent = Math.round(target * t) + suffix;
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+                countObserver.unobserve(el);
+            });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+        /* Canvas Particle Bubbles */
+        const canvas = document.getElementById('bubble-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Bubble {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = canvas.height + 20;
+                    this.radius = Math.random() * 3 + 1;
+                    this.speed = Math.random() * 1.2 + 0.4;
+                    this.alpha = Math.random() * 0.4 + 0.1;
+                }
+                update() {
+                    this.y -= this.speed;
+                    if (this.y < -10) this.reset();
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < 30; i++) particles.push(new Bubble());
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(b => { b.update(); b.draw(); });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>

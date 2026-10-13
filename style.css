@@ -1,0 +1,228 @@
+/* Dribbble "Discover" Editorial Style Sheet */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #08101a; /* Dark Dribbble Slate */
+    color: #e2f1fd;
+}
+
+/* Typography Accent */
+.font-serif-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+/* Dribbble Framed Parallax Container */
+.dribbble-hero-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dribbble-bg-layer {
+    position: absolute;
+    inset: -8%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    transition: transform 0.1s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
+.dribbble-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(8, 16, 26, 0.3) 0%, rgba(8, 16, 26, 0.85) 100%),
+                linear-gradient(180deg, rgba(8, 16, 26, 0.5) 0%, rgba(8, 16, 26, 0.95) 100%);
+}
+
+/* Glassmorphic Minimal Cards */
+.discover-card {
+    background: rgba(14, 27, 43, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 1.25rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.discover-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+/* Solid Section Pinned Panels */
+.discover-section {
+    position: relative;
+    z-index: 10;
+    background-color: #0d1b2a;
+    border-top: 1px solid rgba(56, 189, 248, 0.12);
+    padding: 100px 20px;
+}
+
+/* Sliding Diver Element */
+#sliding-diver {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;            /* left half of the section: screen edge to the text box */
+    height: 100%;
+    object-fit: cover;     /* fills the half; use "contain" to see the whole picture */
+    object-position: right bottom;   /* keeps the camera (right) and coral (bottom) in view */
+    transition: transform 0.1s linear;
+    z-index: 5;
+    will-change: transform;
+}
+@media (max-width: 767px) {
+    #sliding-diver { width: 100%; height: 40%; }
+}
+
+/* Print Receipt Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #receipt-modal, #receipt-modal * {
+        visibility: visible;
+    }
+    #receipt-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white;
+        color: #0d1b2a;
+        display: block !important;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* ---- Layered hero parallax (inspired by multi-layer cloud heroes) ---- */
+.hero-layer {
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    pointer-events: none;
+    z-index: 8;
+    will-change: transform;
+    transform: translateY(var(--py, 0px));
+}
+.hero-layer.rays {
+    top: 0; height: 70%;
+    background: repeating-linear-gradient(105deg,
+        rgba(186, 230, 253, 0) 0px, rgba(186, 230, 253, 0.07) 60px,
+        rgba(186, 230, 253, 0) 130px);
+    -webkit-mask-image: linear-gradient(180deg, #000, transparent);
+    mask-image: linear-gradient(180deg, #000, transparent);
+}
+.hero-layer.mist {
+    height: 220px;
+    background: radial-gradient(ellipse at center, rgba(125, 211, 252, 0.18), transparent 70%);
+    filter: blur(24px);
+    animation: drift 28s ease-in-out infinite alternate;
+}
+.mist-1 { top: 18%; animation-duration: 34s; }
+.mist-2 { top: 48%; animation-duration: 26s; animation-direction: alternate-reverse; }
+.mist-3 { top: 72%; animation-duration: 20s; }
+@keyframes drift {
+    from { margin-left: -6%; }
+    to   { margin-left: 6%; }
+}
+
+/* ---- Stats strip ---- */
+.stats-strip {
+    position: relative;
+    z-index: 10;
+    background: #08101a;
+    padding: 80px 20px;
+    border-top: 1px solid rgba(56, 189, 248, 0.12);
+}
+.stat { border-left: 1px solid rgba(56, 189, 248, 0.3); padding-left: 20px; }
+.stat .count {
+    display: block;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    color: #38bdf8;
+}
+.stat p { margin-top: 10px; color: #94a3b8; font-size: 0.85rem; }
+
+/* ---- Scroll reveal ---- */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-layer.mist { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* ---- Artistic parallax slider ---- */
+.pslider { position: relative; height: 500vh; background: #08101a; }
+.pslider-stick { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.pslide { position: absolute; inset: 0; overflow: hidden; }
+.pslide .pl { will-change: transform; }
+.s-bg { position: absolute; inset: -12% 0; background-size: cover; background-position: center; }
+.s-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,16,26,.85) 0%, rgba(8,16,26,.35) 60%, rgba(8,16,26,.6) 100%); }
+.s-rays { position: absolute; inset: 0; background: repeating-linear-gradient(105deg, rgba(186,230,253,0) 0, rgba(186,230,253,.06) 70px, rgba(186,230,253,0) 150px); pointer-events: none; }
+.s-ghost { position: absolute; right: -2vw; bottom: 4vh; font-size: 24vw; font-weight: 800; line-height: .8; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 2px rgba(186,230,253,.25); pointer-events: none; }
+.s-diver { position: absolute; right: 12vw; top: 22%; width: min(34vw, 380px); filter: drop-shadow(0 25px 35px rgba(0,0,0,.7)); animation: bob 6s ease-in-out infinite alternate; }
+.s-diver.flip { right: auto; left: 8vw; top: auto; bottom: 8%; transform: scaleX(-1); animation: none; }
+@keyframes bob { from { margin-top: -8px; } to { margin-top: 12px; } }
+.s-text { position: absolute; left: 7vw; top: 50%; margin-top: -170px; max-width: 560px; z-index: 5; }
+.s-count { font-family: monospace; font-size: .75rem; letter-spacing: .25em; color: #38bdf8; }
+.s-text h2 { font-size: clamp(2.6rem, 8vw, 6.5rem); font-weight: 800; line-height: .95; color: #fff; margin: 14px 0 20px; text-transform: lowercase; }
+.s-text h2 em { font-family: 'Playfair Display', serif; font-weight: 400; color: #38bdf8; }
+.s-text p { color: #94a3b8; line-height: 1.7; margin-bottom: 28px; max-width: 440px; }
+.s-btn { display: inline-block; border: 1px solid #38bdf8; color: #38bdf8; padding: 12px 28px; border-radius: 999px; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; transition: all .25s; }
+.s-btn:hover { background: #38bdf8; color: #08101a; }
+.pslider-dots { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; z-index: 20; }
+.pslider-dots button { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #38bdf8; background: transparent; cursor: pointer; padding: 0; transition: all .25s; }
+.pslider-dots button.on { background: #38bdf8; transform: scale(1.4); }
+.pslider-hint { position: absolute; bottom: 24px; left: 7vw; font-family: monospace; font-size: .65rem; letter-spacing: .3em; color: #94a3b8; z-index: 20; }
+@media (max-width: 768px) {
+    .s-diver { width: 40vw; right: 4vw; top: auto; bottom: 14%; }
+    .s-diver.flip { left: 4vw; bottom: 14%; }
+    .s-text { left: 6vw; right: 14vw; margin-top: -200px; }
+    .s-ghost { font-size: 34vw; }
+}
+@media (prefers-reduced-motion: reduce) { .s-diver { animation: none; } }
+
+
+/* ---- Add-to-cart fly animation ---- */
+.fly-img {
+    position: fixed;
+    z-index: 9999;
+    object-fit: cover;
+    border-radius: 12px;
+    pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0.5, -0.2, 0.7, 1), opacity 0.8s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.cart-bump { animation: cartBump 0.4s ease; }
+@keyframes cartBump {
+    0%, 100% { transform: scale(1); }
+    40% { transform: scale(1.3); }
+    70% { transform: scale(0.95); }
+}
+
+
+/* ---- Cart quantity + payment tiles ---- */
+.qty-btn { width: 24px; height: 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,.2); color: #f0f9ff; line-height: 1; }
+.qty-btn:hover { border-color: #38bdf8; color: #38bdf8; }
+.qty-input { width: 42px; height: 24px; text-align: center; background: #08101a; border: 1px solid rgba(255,255,255,.2); border-radius: 6px; color: #f0f9ff; -moz-appearance: textfield; }
+.qty-input::-webkit-outer-spin-button, .qty-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.pay-tile { display: block; text-align: center; font-size: .75rem; color: #f0f9ff; border: 1px solid rgba(255,255,255,.2); border-radius: .5rem; padding: 12px 6px; cursor: pointer; transition: all .2s; }
+.pay-tile:hover { border-color: #38bdf8; }
+input:checked + .pay-tile { border-color: #38bdf8; background: rgba(56,189,248,.14); }
+input:focus-visible + .pay-tile { outline: 2px solid #38bdf8; }

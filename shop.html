@@ -197,16 +197,33 @@
             { name: "Panutsa", price: 120, category: "local", img: "images/shop15.jpg" }
         ];
         let offlineMode = false;
+        let backend = 'php';          // 'php' (XAMPP) | 'supabase' (live site) | 'demo'
+        let customerInfo = null;      // used by the Supabase order
+
+        // ---- Supabase settings (paste your own values; see supabase.sql) ----
+        const SUPABASE_URL = 'https://taqexrbhtjktsqhppjmn.supabase.co';      // example: https://abcdxyz.supabase.co
+        const SUPABASE_KEY = 'sb_publishable_dJy9HVb7v4PE7Mwm5qpFbQ_eXNKKGJ8';      // the "anon" / "publishable" key. NEVER paste the secret key here.
+        const onLiveSite = !['localhost', '127.0.0.1'].includes(location.hostname);
 
         async function loadProducts() {
             let products;
             try {
-                const res = await fetch('api/products.php');
-                if (!res.ok) throw new Error('API not available');
+                let res;
+                if (SUPABASE_URL && onLiveSite) {
+                    res = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id,name,price,category,img:image_url&order=id`,
+                        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } });
+                    backend = 'supabase';
+                } else {
+                    res = await fetch('api/products.php');   // XAMPP / MySQL
+                    backend = 'php';
+                }
+                if (!res.ok) throw new Error('Database not available');
                 products = await res.json();
                 if (!Array.isArray(products)) throw new Error('Bad data');
+                products = products.map(p => ({ ...p, price: Number(p.price) }));
             } catch (err) {
-                offlineMode = true;           // no database: use the built-in list
+                backend = 'demo';
+                offlineMode = true;       // no database: use the built-in list
                 products = FALLBACK_PRODUCTS;
                 document.getElementById('local-goods').insertAdjacentHTML('afterend',
                     '<p class="text-[11px] text-body font-mono mt-6">Demo mode: orders are not saved to a database.</p>');
@@ -338,7 +355,7 @@
             const last = document.getElementById('floating_last_name').value;
             const email = document.getElementById('floating_email').value;
 
-            if (offlineMode) { customerId = null; } else
+            if (backend !== 'php') { customerInfo = { email: email, first: first, last: last }; } else
             // Save the customer in MySQL through api/signup.php
             try {
                 const res = await fetch('api/signup.php', {
@@ -379,8 +396,32 @@
             let date = new Date().toLocaleString();
             let refNum;
 
-            if (offlineMode) {
+            if (backend === 'demo') {
                 refNum = Math.floor(Math.random() * 900000) + 100000;
+            } else if (backend === 'supabase') {
+                try {
+                    // Supabase function place_order saves the order and checks prices on the server
+                    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/place_order`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+                        body: JSON.stringify({
+                            p_email: customerInfo.email,
+                            p_first: customerInfo.first,
+                            p_last: customerInfo.last,
+                            p_location: loc,
+                            p_payment: pay,
+                            p_reference: payRef,
+                            p_items: cart.map(i => ({ name: i.name, qty: i.qty }))
+                        })
+                    });
+                    const data = await res.json();
+                    if (!res.ok) throw new Error(data.message || 'Order failed');
+                    refNum = data.ref;
+                    total = data.total;
+                } catch (err) {
+                    alert('Could not save your order: ' + err.message);
+                    return;
+                }
             } else try {
                 // Save the order in MySQL through api/checkout.php
                 const res = await fetch('api/checkout.php', {
